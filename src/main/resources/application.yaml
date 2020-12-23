@@ -1,0 +1,38 @@
+server:
+  port: 8070
+
+# spring 配置
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS                                    # 控制台彩色输出
+  datasource:
+    #    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@192.168.232.201:1521:hosp     # Oracle 连接参数
+    username: drgs_base
+    password: 1
+
+
+# mybatis 配置项
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml               # 对应Mapper路径
+  type-aliases-package: com.yxsoft.drgsservice.entity    # 实体类对应路径
+  configuration:
+    cache-enabled: true                                  # 开启二级缓存
+    map-underscore-to-camel-case: true                   # 驼峰命名规则
+    call-setters-on-nulls: true                          # 允许返回 null 值
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db_config:
+      logic-delete-field: deleted # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+URL:
+   CHECK: /check
+   SYSTEM: /system
+   LOG: /log
+   DATA: /data
+   DIC: /dic
+   REG: /reg
+   TEMPORARY: /temporary
